@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
   name = 'Angular';
   userForm: FormGroup;
   nomineeForm: FormGroup;
@@ -25,17 +25,17 @@ export class AppComponent implements OnInit  {
       customerDetails: this.fb.group({
         fullName: '',
         email: '',
-        mobile: ''
+        mobile: '',
       }),
-      addressDetails:  this.fb.array([])
-    })
+      addressDetails: this.fb.array([]),
+    });
   }
-  get addressForm(): FormArray  {
-      return this.userForm.get('addressDetails') as FormArray;
+  get addressForm(): FormArray {
+    return this.userForm.get('addressDetails') as FormArray;
   }
   addAddress() {
     this.addressFormGroup = this.fb.group({
-      addressLine: ['']
+      addressLine: [''],
     });
     this.addressForm.push(this.addressFormGroup);
   }
@@ -43,6 +43,6 @@ export class AppComponent implements OnInit  {
     console.log(value);
   }
   removeLine(i) {
-        this.addressForm.removeAt(i);
+    this.addressForm.removeAt(i);
   }
 }
